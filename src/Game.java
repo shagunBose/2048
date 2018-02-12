@@ -7,14 +7,17 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 public class Game extends JPanel implements KeyListener, ActionListener{
 	public static final int Width = 470;
@@ -44,14 +47,18 @@ public class Game extends JPanel implements KeyListener, ActionListener{
 		setLayout(null);
 		setPreferredSize(new Dimension(470, 600));
 		setFocusable(true); //allows keyboard input 
-		addKeyListener(this);
+		KeyListener key = null;
+		addKeyListener(key);
+		requestFocusInWindow();
+	
 		
 		start = new JButton("START");
 		start.setBounds(342, 100, 80, 30);
-		start.addActionListener(this);
 		start.setBackground(backgroundColor);
 		start.setFocusPainted(false);
+		start.addActionListener(this);
 		this.add(start);
+	
 		
 		//render();
 	}
@@ -215,6 +222,7 @@ public class Game extends JPanel implements KeyListener, ActionListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		System.out.println(e);
 		if(!isAvailable()) {
 			lostGame = true;
 		}
@@ -223,7 +231,6 @@ public class Game extends JPanel implements KeyListener, ActionListener{
 			switch(e.getKeyCode()) {
 			case KeyEvent.VK_RIGHT: 
 				moveRight();
-				addRandomTile();
 				break;
 			case KeyEvent.VK_LEFT: 
 				moveLeft();
@@ -243,21 +250,33 @@ public class Game extends JPanel implements KeyListener, ActionListener{
 	public void keyReleased(KeyEvent e) {}
 	
 	public void moveRight() {
-		System.out.println("move right");
 		for(int i = 0; i < 4; i++) {
 			for (int j = 2; j <=0; j--) {
 				for(int k = j; k < 3; k++) {
-					if(tiles[i][k+1] == null) {
-						tiles[i][k+1].setValue(tiles[i][k].getValue());
+					int next = k+1;
+					int val = tiles[i][k].getValue();
+					Tile cur = tiles[i][k];
+					if(tiles[i][k] == null) {
+						continue;
+				
+					} else if(tiles[i][next] == null) {
+						tiles[i][next] = cur;
 						tiles[i][k] = null;
-					} else if (tiles[i][k+1].getValue() == tiles[i][k].getValue()) {
-						tiles[i][k+1].setValue(tiles[i][k].getValue()*2);
+						break;
+						
+					} else if (tiles[i][next].getValue() == val) {
+						tiles[i][next].setValue(val*2);
 						tiles[i][k] = null;
+						val = 2*val;
+						score += val;
+						break;
 					}
 				}
 			}
 		}
+		addRandomTile();
 	}
+	
 	
 	public void moveLeft() {
 	
