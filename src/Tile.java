@@ -20,6 +20,7 @@ public class Tile {
 	private Font font;
 	
 	public Tile() {
+		value = 0;
 	}
 	
 	public Tile(int value) {
