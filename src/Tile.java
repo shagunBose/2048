@@ -19,10 +19,6 @@ public class Tile {
 	private static Color textColor;
 	private Font font;
 	
-	public Tile() {
-		value = 0;
-	}
-	
 	public Tile(int value) {
 		this.value = value;
 	}
@@ -67,9 +63,6 @@ public class Tile {
 	public int getValue() {
 		return this.value;
 	}
-	
-	public boolean isEmplty() {
-		return value == 0;
-	}
+
 
 }
