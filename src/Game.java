@@ -45,14 +45,21 @@ public class Game extends JPanel{
 	
 	public int moves = 0;
 	
-	JButton start;
+	public boolean movesR = true;
+	public boolean movesL = true;
+	public boolean movesU = true;
+	public boolean movesD = true;
 	
+	public int moves = 0;
+	
+	JButton start;
 	
 	public Game() {
 		setLayout(null);
 		setPreferredSize(new Dimension(470, 600));
 		setFocusable(true); //allows keyboard input 
 		
+
 		addKeyListener (new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {	
@@ -76,6 +83,8 @@ public class Game extends JPanel{
 				}
 
 				
+
+
 				if(isRunning) {
 						String s = "";
 						switch(e.getKeyCode()) {
@@ -112,6 +121,7 @@ public class Game extends JPanel{
 								for(int j = 0; j <4; j++) {
 									tiles[i][j].clearMerged();
 								}
+
 							}
 						}
 						
@@ -119,14 +129,12 @@ public class Game extends JPanel{
 							isRunning = false;
 							lostGame = true;
 						}
-						
 					} 
 					
 					repaint();
 
 				}		
 		});
-
 	}
 	
 	public void start() {
@@ -211,10 +219,12 @@ public class Game extends JPanel{
 				}else if(!isRunning && lostGame) {
 					g.setColor(Color.BLACK);
 					g.setFont(new Font("FunSized", Font.BOLD, 20));
+
 					g.drawString("No More Moves!", 125, 345);
 					g.drawString("Biggest Tile: " + biggestTile, 125, 405);
 					g.drawString("Valid Moves Made: " + moves, 125, 445);
 					
+
 				}else if(!isRunning && wonGame) {
 					g.setColor(Color.BLACK);
 					g.setFont(new Font("FunSized", Font.BOLD, 20));
@@ -274,7 +284,6 @@ public class Game extends JPanel{
 				} else {
 					tiles[r.get(index)][c.get(index)] = new Tile(4); //probability of 0.2 (1 of 5)
 				}
-				
 	}
 	
 	public int emptySpaces() {
