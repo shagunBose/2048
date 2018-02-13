@@ -36,6 +36,14 @@ public class Game extends JPanel{
 	public boolean isRunning = false; //to check state of game - running or stopped. 
 	public boolean lostGame = false; //to check status of game - win or loose. 
 	public boolean wonGame = false;
+	public boolean pauseGame = false;
+	
+	public boolean movesR = true;
+	public boolean movesL = true;
+	public boolean movesU = true;
+	public boolean movesD = true;
+	
+	public int moves = 0;
 	
 	public boolean movesR = true;
 	public boolean movesL = true;
@@ -46,22 +54,37 @@ public class Game extends JPanel{
 	
 	JButton start;
 	
-	KeyAdapter key;
-	
-	
 	public Game() {
 		setLayout(null);
 		setPreferredSize(new Dimension(470, 600));
 		setFocusable(true); //allows keyboard input 
 		
-		addKeyListener(key = new KeyAdapter() {
+
+		addKeyListener (new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {	
 				if(e.getKeyCode() == KeyEvent.VK_SPACE){
-					start();
-					System.out.println("Game Started");
+					if(pauseGame) {
+						System.out.println("\n>>>> Game Resumed <<<<");
+						isRunning = true;
+						pauseGame = false;
+						repaint();
+					} else {
+						start();
+						System.out.println(">>>> Game Started <<<<");
+					}	
 				}
 				
+				if(pauseGame) {
+					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+						System.out.println("\n>>> Game Exited <<<<");
+						System.exit(0);
+					}
+				}
+
+				
+
+
 				if(isRunning) {
 						String s = "";
 						switch(e.getKeyCode()) {
@@ -83,13 +106,22 @@ public class Game extends JPanel{
 							break;
 						case KeyEvent.VK_SPACE:
 							break;
-						default: s += "Invalid Key Pressed >>> " + e.getKeyChar();
+						case KeyEvent.VK_ESCAPE:
+							isRunning = false;
+							pauseGame = true;
+							break;
+						default: s += "Invalid Key Pressed >>> " + e.getKeyCode();
 						}
 						
-						System.out.println(s + "\nMoves: " + moves + " Highest Tile on Board: " + biggestTile + "\n");
-						for(int i = 0; i <4; i ++) {
-							for(int j = 0; j <4; j++) {
-								tiles[i][j].clearMerged();
+						if(pauseGame) {
+							System.out.println("\nGame paused: User wishes to exit >> Getting confirmation");
+						} else {
+							System.out.println(s + "\nMoves: " + moves + " Highest Tile on Board: " + biggestTile + "\n");
+							for(int i = 0; i <4; i ++) {
+								for(int j = 0; j <4; j++) {
+									tiles[i][j].clearMerged();
+								}
+
 							}
 						}
 						
@@ -103,8 +135,6 @@ public class Game extends JPanel{
 
 				}		
 		});
-
-		//render();
 	}
 	
 	public void start() {
@@ -189,12 +219,23 @@ public class Game extends JPanel{
 				}else if(!isRunning && lostGame) {
 					g.setColor(Color.BLACK);
 					g.setFont(new Font("FunSized", Font.BOLD, 20));
-					g.drawString("No More Moves!", 145, 365);
-					g.drawString("Score: " + score, 155, 390);
+
+					g.drawString("No More Moves!", 125, 345);
+					g.drawString("Biggest Tile: " + biggestTile, 125, 405);
+					g.drawString("Valid Moves Made: " + moves, 125, 445);
+					
+
 				}else if(!isRunning && wonGame) {
 					g.setColor(Color.BLACK);
 					g.setFont(new Font("FunSized", Font.BOLD, 20));
 					g.drawString("You Won!", 155, 365);
+				} else if(!isRunning && pauseGame){
+					g.setColor(backgroundColor);
+					g.fillRoundRect(10, 160, 450, 450, 15, 15);
+					g.setColor(Color.white);
+					g.drawString("Are you sure you want to quit?", 130, 360);
+					g.drawString("SPACE to Resume", 110, 377);
+					g.drawString("ENTER to Quit", 270, 377);
 				}else {
 					g.setColor(Color.BLACK);
 					g.setFont(new Font("FunSized", Font.BOLD, 20));
@@ -237,7 +278,12 @@ public class Game extends JPanel{
 				}
 			} 
 				int index = rand.nextInt(availableSpace.size());
-				tiles[r.get(index)][c.get(index)] = new Tile(2);
+				int probablity = rand.nextInt(5);
+				if(probablity < 4) {
+					tiles[r.get(index)][c.get(index)] = new Tile(2); // probability of 0.8 (4 of 5)
+				} else {
+					tiles[r.get(index)][c.get(index)] = new Tile(4); //probability of 0.2 (1 of 5)
+				}
 	}
 	
 	public int emptySpaces() {
