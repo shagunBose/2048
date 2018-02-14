@@ -31,19 +31,19 @@ public class Tile {
 		} else if (value == 4) {
 			BGcolor = Color.WHITE;
 		} else if (value == 8) {
-			BGcolor = new Color(255, 170, 0); //peach
-		} else if (value == 16) {
-			BGcolor = new Color(255, 136, 77); //orange
-		} else if (value == 32) {
-			BGcolor = new Color(255, 92, 51); //red
-		} else if (value == 64) {
 			BGcolor = new Color(255, 204, 0); //yellow
+		} else if (value == 16) {
+			BGcolor = new Color(255, 153, 0); //orange
+		} else if (value == 32) {
+			BGcolor = new Color(204, 51, 0); //red
+		} else if (value == 64) {
+			BGcolor = new Color(255, 153, 153); //pinkish red
 		} else if (value == 128) {
-			BGcolor = new Color(255, 71, 26); //red
+			BGcolor = new Color(204, 0, 102); //magenta
 		} else if (value == 256) {
-			BGcolor = new Color(255, 102, 102); //salmon
+			BGcolor = new Color(204, 102, 153); //purple-ish pink
 		} else if (value == 512) {
-			BGcolor = new Color(255, 153, 204); //pink
+			BGcolor = new Color(153, 0, 153); //pink
 		} else if (value == 1024) {
 			BGcolor = new Color(255, 153, 255); //light purple
 		} else if (value == 2048) {
