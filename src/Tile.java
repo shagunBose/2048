@@ -31,23 +31,23 @@ public class Tile {
 		} else if (value == 4) {
 			BGcolor = Color.WHITE;
 		} else if (value == 8) {
-			BGcolor = new Color(255, 112, 77);
+			BGcolor = new Color(255, 170, 0); //peach
 		} else if (value == 16) {
-			BGcolor = new Color(255, 173, 51);
+			BGcolor = new Color(255, 136, 77); //orange
 		} else if (value == 32) {
-			BGcolor = new Color(255, 51, 0);
+			BGcolor = new Color(255, 92, 51); //red
 		} else if (value == 64) {
-			BGcolor = new Color(230, 184, 0);
+			BGcolor = new Color(255, 204, 0); //yellow
 		} else if (value == 128) {
-			BGcolor = new Color(255, 224, 102);
+			BGcolor = new Color(255, 71, 26); //red
 		} else if (value == 256) {
-			BGcolor = new Color(255, 224, 102);
+			BGcolor = new Color(255, 102, 102); //salmon
 		} else if (value == 512) {
-			BGcolor = new Color(255, 153, 153);
+			BGcolor = new Color(255, 153, 204); //pink
 		} else if (value == 1024) {
-			BGcolor = new Color(255, 102, 153);
+			BGcolor = new Color(255, 153, 255); //light purple
 		} else if (value == 2048) {
-			BGcolor = new Color(159, 255, 128);
+			BGcolor = new Color(159, 255, 128); //bright blue
 		} else if (value > 2048 ) {
 			BGcolor = Color.BLACK;
 		}
@@ -58,10 +58,8 @@ public class Tile {
 	public static Color setTextColor(int value) {
 		if(value < 8) {
 			textColor = Color.DARK_GRAY;
-		} else if (value < 2048) {
+		} else if (value <= 2048) {
 			textColor = Color.WHITE;
-		} else if (value == 2048) {
-			textColor = Color.GREEN;
 		} else if (value > 2048) {
 			textColor = Color.PINK;
 		}

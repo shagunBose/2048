@@ -15,20 +15,6 @@ public class Index {
 	
 	public static void main (String[] args) {
 		Game newGame = new Game();
-//		start = new JButton("START");
-//		start.setBounds(342, 100, 80, 30);
-//		start.setBackground(backgroundColor);
-//		start.setFocusPainted(false);
-//		this.add(start);
-//		start.addActionListener(new ActionListener(){
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				start();
-//			}
-//			
-//		});
-		
 		JFrame frame = new JFrame("2048");
 		frame.setSize(470, 640);
 		frame.setResizable(false);
