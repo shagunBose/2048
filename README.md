@@ -10,4 +10,4 @@ Some things that I would hope to incorporate into this game, to improve its UX/U
  
 Here are some screenshots from the game!
 
-![Alt text](http://github.com/shagunBose/2048/master/screen-shot-2018-02-14-at-2-59-47-pm-2.png)
+![screenshot](2048/screen-shot-2018-02-14-at-2-59-47-pm-2.png)
