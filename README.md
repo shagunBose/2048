@@ -8,6 +8,6 @@ Some things that I would hope to incorporate into this game, to improve its UX/U
  ~ have the tiles animated in such a way that they slide to the other side, instead of just popping up.
  ~ having new tiles pop up on the board, by growing in size at the place where they are supposed to originate.
  
-Here are some screenshots from the game!
+Here is a screenshots from the game! [Please note that the text graphic may appear differently on your computer if you don't have that text.]
 
 ![2048 Game](https://github.com/shagunBose/2048/blob/master/screen-shot-2018-02-14-at-2-59-47-pm-2.png)
