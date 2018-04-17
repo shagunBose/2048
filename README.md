@@ -9,4 +9,5 @@ Some things that I would hope to incorporate into this game, to improve its UX/U
  ~ having new tiles pop up on the board, by growing in size at the place where they are supposed to originate.
  
 Here are some screenshots from the game!
-![Alt text](2048/screen-shot-2018-02-14-at-2-59-47-pm-2.png)
+
+![Alt text](/2048/screen-shot-2018-02-14-at-2-59-47-pm-2.png)
