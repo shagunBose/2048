@@ -136,6 +136,7 @@ public class Game extends JPanel{
 				}
 				
 				repaint(); //after every key event - the game board is updated.
+				//movesR = true; movesL = true; movesU = true; movesD = true;
 				}		
 		});
 		
