@@ -11,7 +11,9 @@ Some things that I would hope to incorporate into this game, to improve its UX/U
 Run Instructions: 
 Compile: javac Index.java
 Run: java Index
+
+Note about Font: This game uses the custom font, Fun Sizd. To view that please download FunSized.ttf provided in the repository.
  
-Here is a screenshots from the game! [Please note that the text graphic may appear differently on your computer if you don't have that text!]
+Here is a screenshots from the game! 
 
 ![2048 Game](https://github.com/shagunBose/2048/blob/master/screen-shot-2018-02-14-at-2-59-47-pm-2.png)
