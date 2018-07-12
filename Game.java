@@ -90,7 +90,7 @@ public class Game extends JPanel{
 						printToConsole();
 					}
 					
-				} else if(e.getKeyCode() == KeyEvent.VK_R) { //r for restart
+				} else if(e.getKeyCode() == KeyEvent.VK_R) { //r for refresh
 					isRunning = false;
 					refreshGame = true;
 					System.out.println("\nGame paused: User wishes to restart >> Getting confirmation");
@@ -115,6 +115,10 @@ public class Game extends JPanel{
 					}
 					
 				} else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					if(isRunning){
+						isRunning = false;
+						quitGame = true;
+					}
 					if(quitGame || wonGame || lostGame) {
 						System.out.println("\n>>> Game Exited <<<<");
 						System.exit(0);
@@ -220,7 +224,7 @@ public class Game extends JPanel{
 			g.setColor(new Color(49, 38, 27)); //instructions
 			g.setFont(new Font("ArialBlack", Font.BOLD, 14));
 			g.drawString("Join the numbers and get to the 2048 tile!", 10, 120);
-			g.drawString("R: Restart  Q: Quit  Arrow Keys: Move Tiles", 10, 140);
+			g.drawString("R: Refresh  ESC: Quit  Arrow Keys: Move Tiles", 10, 140);
 			
 			
 			
