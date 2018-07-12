@@ -12,7 +12,7 @@ Run Instructions:
 Compile: javac Index.java
 Run: java Index
 
-Note about Font: This game uses the custom font, Fun Sizd. To view that please download FunSized.ttf provided in the repository.
+Note about Font: This game uses the custom font, Fun Sized. To view that please download FunSized.ttf provided in the repository.
  
 Here is a screenshots from the game! 
 
